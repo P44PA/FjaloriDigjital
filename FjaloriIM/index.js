@@ -1,0 +1,589 @@
+const result = document.getElementById("result");
+const btn = document.getElementById("search-btn");
+
+btn.addEventListener("click", Display);
+
+const dictionaryData = [
+    {
+        "word": "html",
+        "meanings": [
+            {
+                "partOfSpeech": "Emër",
+                "definitions": [
+                    {
+                        "definition": "Akronim: Hyper Text Markup Language, Gjuhë programimi për formatimin e faqeve web dhe në mënyrë të udhëzueshme si browserat duhet të vizualizojnë elementet që i përgjigjen veprimeve të përdoruesit.",
+                        "example": "Anglishtja"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "word": "query",
+        "meanings": [
+            {
+                "partOfSpeech": "Emër",
+                "definitions": [
+                    {
+                        "definition": "Bashkësi instruksionesh për të nxjerrë të dhëna nga një database dhe për prezantimin e vet atyre për përdorim.",
+                        "example": "Anglishtja"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "word": "database",
+        "meanings": [
+            {
+                "partOfSpeech": "Emër",
+                "definitions": [
+                    {
+                        "definition": "Koleksioni i organizuar i të dhënave i ruajtur në mënyrë digjitale në tabela.",
+                        "example": "Anglishtja"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "word": "domain",
+        "meanings": [
+            {
+                "partOfSpeech": "Emër",
+                "definitions": [
+                    {
+                        "definition": "Është pjesa e fundit e një adrese Interneti, si .com .de etj.",
+                        "example": "Anglishtja"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "word": "plug in",
+        "meanings": [
+            {
+                "partOfSpeech": "Emër",
+                "definitions": [
+                    {
+                        "definition": "Program software që mund të integrohet në një aplikim më të madh për t'i dhënë funksione të mëtejshme.",
+                        "example": "Anglishtja"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "word": "server",
+        "meanings": [
+            {
+                "partOfSpeech": "Emër",
+                "definitions": [
+                    {
+                        "definition": "Kompiuteri që përmban informacionin e nevojshëm për përdoruesit e quajtur klient.",
+                        "example": "Anglishtja"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "word": "username",
+        "meanings": [
+            {
+                "partOfSpeech": "Emër",
+                "definitions": [
+                    {
+                        "definition": "Identifikues me të cilin hyn në burimet (përgjithësisht në një rrjet). Së bashku me passwordin përfaqësojnë kredencialet të një përdoruesi, me bashkimin e të cilave përdoruesi njihet nga sistemi.",
+                        "example": "Anglishtja"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "word": "www",
+        "meanings": [
+            {
+                "partOfSpeech": "Emër",
+                "definitions": [
+                    {
+                        "definition": "Akronim: World Wide Web. Rrjet botëror i strukturimit të informacionit dhe i burimeve në modalitetin HTML.",
+                        "example": "Anglishtja"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "word": "algoritëm",
+        "meanings": [
+            {
+                "partOfSpeech": "Emër",
+                "definitions": [
+                    {
+                        "definition": "Një set udhëzimesh për të zgjidhur një problem me hapa të përcaktuar.",
+                        "example": "Anglishtja"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "word": "binar",
+        "meanings": [
+            {
+                "partOfSpeech": "Emër",
+                "definitions": [
+                    {
+                        "definition": "Sistem numërues me vetëm dy shifra: 0 dhe 1.",
+                        "example": "Anglishtja"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "word": "Cache",
+        "meanings": [
+            {
+                "partOfSpeech": "Emër",
+                "definitions": [
+                    {
+                        "definition": "Kujtesë e shpejtë për të ruajtur të dhënat që kërkojnë shpeshimi.",
+                        "example": "Anglishtja"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "word": "enkriptim",
+        "meanings": [
+            {
+                "partOfSpeech": "Folje",
+                "definitions": [
+                    {
+                        "definition": "Mënyra për të fshehur një mesazh për persona të autorizuar vetëm.",
+                        "example": "Anglishtja"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "word": "java",
+        "meanings": [
+            {
+                "partOfSpeech": "Emër",
+                "definitions": [
+                    {
+                        "definition": "Një gjuhë programimi që përdoret për zhvillimin e aplikacioneve të ndryshme.",
+                        "example": "Anglishtja"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "word": "firewall",
+        "meanings": [
+            {
+                "partOfSpeech": "Emër",
+                "definitions": [
+                    {
+                        "definition": "Një sistem që mbron rrjetin nga sulmet e padëshiruara.",
+                        "example": "Anglishtja"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "word": "array",
+        "meanings": [
+            {
+                "partOfSpeech": "Emër",
+                "definitions": [
+                    {
+                        "definition": "Një strukturë e të dhënave që përdoret për të ruajtur një grup të dhënash të njëjta të organizuara në mënyrë të rregullt.",
+                        "example": "Anglishtja"
+                    }
+                ]
+            }
+        ]
+    },
+    
+    {
+        "word": "variabel",
+        "meanings": [
+            {
+                "partOfSpeech": "Emër",
+                "definitions": [
+                    {
+                        "definition": "Një term i përdorur për të identifikuar një vlerë të ruajtur.",
+                        "example": "Anglishtja"
+                    }
+                ]
+            }
+        ]
+    },
+    
+    {
+        "word": "funksion",
+        "meanings": [
+            {
+                "partOfSpeech": "Emër",
+                "definitions": [
+                    {
+                        "definition": "Një bllok i përdorur për të ekzekutuar një veprim të caktuar ose një grup veprimesh në programim.",
+                        "example": "Anglishtja"
+                    }
+                ]
+            }
+        ]
+    },
+    
+    {
+        "word": "kompilim",
+        "meanings": [
+            {
+                "partOfSpeech": "Folje",
+                "definitions": [
+                    {
+                        "definition": "Procesi i konvertimit të kodit burimor në kod ekzekutues që mund të kryhet nga kompjuteri.",
+                        "example": "Anglishtja"
+                    }
+                ]
+            }
+        ]
+    },
+    
+    {
+        "word": "iterim",
+        "meanings": [
+            {
+                "partOfSpeech": "Folje",
+                "definitions": [
+                    {
+                        "definition": "Procesi i përsëritjes së një blloku të kodit disa herë, shpesh duke përdorur një strukturë si 'for' ose 'while'.",
+                        "example": "Anglishtja"
+                    }
+                ]
+            }
+        ]
+    },
+    
+    {
+        "word": "parameter",
+        "meanings": [
+            {
+                "partOfSpeech": "Emër",
+                "definitions": [
+                    {
+                        "definition": "Një vlerë e dhënë në një funksion që përdoret për të ndryshuar sjelljen e tij ose për të përcaktuar veprimet e tij.",
+                        "example": "Anglishtja"
+                    }
+                ]
+            }
+        ]
+    },
+    
+    {
+        "word": "class",
+        "meanings": [
+            {
+                "partOfSpeech": "Emër",
+                "definitions": [
+                    {
+                        "definition": "Një bllok i përdorur për të organizuar kodin dhe për të krijuar një tip të ri të dhënash në programim orientuar në objekte.",
+                        "example": "Nuk është huazuar."
+                    }
+                ]
+            }
+        ]
+    },
+    
+    {
+        "word": "debugging",
+        "meanings": [
+            {
+                "partOfSpeech": "Folje",
+                "definitions": [
+                    {
+                        "definition": "Është procesi i identifikimit dhe korrigjimit të gabimeve në kodin e programit për të siguruar që aplikacioni të funksionojë siç është parashikuar.",
+                        "example": "Folje"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "word": "vektor",
+        "meanings": [
+            {
+                "partOfSpeech": "Emër",
+                "definitions": [
+                    {
+                        "definition": "Janë koleksione me madhësi fikse të elementeve të të njëjtit lloj, të aksesuara me indeks.",
+                        "example": "Anglishtja"
+                    }
+                ]
+            }
+        ]
+    },
+    
+    {
+        "word": "matriks",
+        "meanings": [
+            {
+                "partOfSpeech": "Emër",
+                "definitions": [
+                    {
+                        "definition": "Vargje me dy dimensione. Ato lejojnë që të dhënat të organizohen në rreshta dhe kolona.",
+                        "example": "Anglishtja"
+                    }
+                ]
+            }
+        ]
+    },
+    
+    {
+        "word": "argument",
+        "meanings": [
+            {
+                "partOfSpeech": "Emër",
+                "definitions": [
+                    {
+                        "definition": "Vlera që jepet si hyrje për një funksion në momentin e thirjes së tij.",
+                        "example": "Anglishtja"
+                    }
+                ]
+            }
+        ]
+    },
+    
+    {
+        "word": "continue",
+        "meanings": [
+            {
+                "partOfSpeech": "Folje",
+                "definitions": [
+                    {
+                        "definition": "Përdoret brenda loopave për të kapërcyer kodin e mbetur brenda ciklit për iterimin aktual dhe për të vazhduar në iterimin tjetër.",
+                        "example": "Anglishtja"
+                    }
+                ]
+            }
+        ]
+    },
+    
+    {
+        "word": "metod",
+        "meanings": [
+            {
+                "partOfSpeech": "Emër",
+                "definitions": [
+                    {
+                        "definition": "Një funksion i caktuar që i përket një klase dhe kryen veprime me objektet e atij tipi.",
+                        "example": "Anglishtja"
+                    }
+                ]
+            }
+        ]
+    },
+    
+    {
+        "word": "list",
+        "meanings": [
+            {
+                "partOfSpeech": "Emër",
+                "definitions": [
+                    {
+                        "definition": "Një strukturë e të dhënave që ruan vlera të shumta të një tipi të caktuar.",
+                        "example": "Anglishtja"
+                    }
+                ]
+            }
+        ]
+    },
+    
+    {
+        "word": "condit",
+        "meanings": [
+            {
+                "partOfSpeech": "Emër",
+                "definitions": [
+                    {
+                        "definition": "Një shprehje që vlerësohet si e vërtetë ose e gabuar dhe që përdoret për të kontrolluar drejtimin e ekzekutimit të një programi.",
+                        "example": "Anglishtja"
+                    }
+                ]
+            }
+        ]
+    },
+    
+    {
+        "word": "break",
+        "meanings": [
+            {
+                "partOfSpeech": "Emër",
+                "definitions": [
+                    {
+                        "definition": "Përdoret për të dalë nga një loop, duke përfunduar menjëherë ekzekutimin e ciklit.",
+                        "example": "Anglishtja"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "word": "referencë ",
+        "meanings": [
+            {
+                "partOfSpeech": "Emër",
+                "definitions": [
+                    {
+                        "definition": "Një lidhje ose përkohës në një objekt ose vlerë në memorien kompjuterike. ",
+                        "example": "Anglishtja"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "word": "modifikues ",
+        "meanings": [
+            {
+                "partOfSpeech": "Emër",
+                "definitions": [
+                    {
+                        "definition": "Një element që ndryshon veprimet ose karakteristikat e një elementi tjetër në programim. ",
+                        "example": "Anglishtja"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "word": "strukturë",
+        "meanings": [
+            {
+                "partOfSpeech": "Emër",
+                "definitions": [
+                    {
+                        "definition": "Një mënyrë e organizuar për të përkthyer të dhënat në një mënyrë që është më e lehtë për të përpunuar. ",
+                        "example": "Anglishtja"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "word": "objekt",
+        "meanings": [
+            {
+                "partOfSpeech": "Emër",
+                "definitions": [
+                    {
+                        "definition": "Një instance e një klase, e cila ka atribute dhe mund të kryejë veprime të caktuara. ",
+                        "example": "Anglishtja"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "word": "klasë",
+        "meanings": [
+            {
+                "partOfSpeech": "Emër",
+                "definitions": [
+                    {
+                        "definition": "Një bllok ndërtese për të përfaqësuar një grup objektivësh me atributet dhe veprimet e përbashkëta. ",
+                        "example": "Anglishtja"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "word": "double",
+        "meanings": [
+            {
+                "partOfSpeech": "Emër",
+                "definitions": [
+                    {
+                        "definition": "Në programim,  përdoret për të përshkruar një lloj të dhënash që përdoret për të përfaqësuar numra me pikë të fluturueshme (numra dhjetërorë) me precizion të dyfishuar. ",
+                        "example": "Anglishtja"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "word": "switch",
+        "meanings": [
+            {
+                "partOfSpeech": "Emër",
+                "definitions": [
+                    {
+                        "definition": "Eshtë një strukturë kontrolli që përdoret për të shprehur një set të mundësive të ndryshme për një variabël të caktuar dhe për të kryer veprime të ndryshme bazuar në vlerën e kësaj variabele.",
+                        "example": "Anglishtja"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "word": "source code",
+        "meanings": [
+            {
+                "partOfSpeech": "Emër",
+                "definitions": [
+                    {
+                        "definition": "Source code është një sekuenca e instruksioneve të shkruara në një gjuhë programimi specifike, të cilat kompjuteri mund t'i kuptojë dhe t'i ekzekutojë për të krijuar një program kompjuterik.",
+                        "example": "Anglishtja"
+                    }
+                ]
+            }
+        ]
+    }
+
+];
+
+
+
+ function Display() {
+    let inpWord = document.getElementById("inp-word").value.toLowerCase(); // Convert input to lowercase for case-insensitive search
+
+    
+    
+    // Searching for the word in the dictionary data
+    const wordData = dictionaryData.find(entry => entry.word.toLowerCase() === inpWord);
+
+    if (wordData) {
+        // Displaying word details
+        result.innerHTML = `
+            <div class="word">
+                <h3>${inpWord}</h3>
+
+            </div>
+            <div class="details">
+                <p>${wordData.meanings[0].partOfSpeech}</p>
+               
+            </div>
+            <p class="word-meaning">
+                ${wordData.meanings[0].definitions[0].definition}
+            </p>
+            <p class="word-example">
+                <span>Huazuar nga : </span>  ${wordData.meanings[0].definitions[0].example || ""}
+            </p>`;
+    } else {
+        result.innerHTML = `<h3 class="error">Fjala nuk u gjet!</h3>`;
+    }
+}
+
+
+

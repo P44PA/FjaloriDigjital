@@ -1,0 +1,84 @@
+/*style.css*/
+@import url( 
+"https://fonts.googleapis.com/css2?family=Pacifico&display=swap"); 
+@import url( 
+"https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,400;0,600;0,800;1,300&display=swap"); 
+
+* { 
+	padding: 0; 
+	margin: 0; 
+	box-sizing: border-box; 
+} 
+
+h2 { 
+	text-align: center; 
+	font-size: 3em; 
+	/* font-family: "Pacifico", cursive;  */
+    font-family: 'Times New Roman', Times, serif;
+	color: #0acae3; 
+	padding: 0.5em; 
+} 
+
+.section1 { 
+	display: flex; 
+	justify-content: center; 
+	align-items: center; 
+} 
+
+.btn { 
+	padding: 10px 12px; 
+	padding-bottom: 6px; 
+	line-height: 20px; 
+	outline: none; 
+	border: none; 
+	background: #0acae3; 
+	cursor: pointer; 
+	color: white; 
+	border-radius: 4px; 
+	margin-left: 10px; 
+	transition: all 0.4s; 
+	height: 34.325px; 
+} 
+
+.btn i { 
+	display: none; 
+	margin-bottom: 6.5px; 
+} 
+
+.btn:hover { 
+	background-color: #babd15; 
+} 
+
+.inputValue { 
+	line-height: 20px; 
+	padding: 7px; 
+	border: 1px solid #afabab; 
+	border-radius: 4px; 
+	width: 250px; 
+	outline: none; 
+	font-size: 15px; 
+} 
+
+.section2 { 
+	max-width: 370px; 
+	width: calc(100% - 20px); 
+	margin: auto; 
+} 
+
+.section2 .value { 
+	cursor: pointer; 
+	text-align: left; 
+	margin: 0; 
+	padding: 0; 
+	color: black; 
+	text-decoration: none; 
+	font-size: 35px; 
+} 
+
+h4 { 
+	color: #0acae3; 
+} 
+
+.section2 p { 
+	text-align: justify; 
+}
